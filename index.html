@@ -7,7 +7,7 @@
   <title>Shop</title>
 </head>
 <body>
-  <div class="main">
+  <div id="main">
     <h1>Онлайн магазин</h1>
     <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="">
     <p>Добро пожаловать в наш онлайн-магазин. Здесь ты найдёшь всё необходимое для повседневной жизни. Мы предлагаем
@@ -29,6 +29,7 @@
     let tg = window.Telegram.WebApp;
     let buy = document.getElementById('buy');
     let order = document.getElementById('order');
+    tg.expand();
 
     buy.addEventListener("click", () => {
       document.getElementById("main").style.display = "none";
@@ -37,6 +38,17 @@
     });
 
     order.addEventListener("click", () => {
+      let name = getElementById("user_name").value;
+      let email = getElementById("user_email").value;
+      let phone = getElementById("phone").value;
+
+      let data = {
+        name: name,
+        email: email,
+        phone: phone
+      };
+      tg.sendData(JSON,stringify(data));
+
       tg.close();
     });
 
